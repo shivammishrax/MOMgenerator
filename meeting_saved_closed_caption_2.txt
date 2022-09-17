@@ -1,0 +1,38 @@
+10:05:17 good morning.
+10:05:21 So I'm starting the captions, and then we can communicate about the status of this meeting.
+10:05:28 Okay, we'll just talk about the hackathon.
+10:05:31 Okay, So
+10:05:33 Okay, let me know. I Can also give you a demo as well
+10:05:39 Sure. So do you see right side on the captions, So you might be seeing your captions?
+10:05:45 Option.
+10:05:49 what I'm seeing is participant has enabled closed captioning.
+10:05:55 Okay.
+10:05:56 And it's asking, Who can see who can see that?
+10:05:58 To this transcript
+10:05:59 Okay, perfect.
+10:06:04 Okay. So let's talk about the status of this call.
+10:06:07 So Nahi, we are working on some codes for hackathon.
+10:06:12 Okay, as we are aware. So so part as for the status, I know that we have completed the the azure subscription request, and we have also worked on creating transcripts through zoom by We are talking right?
+10:06:30 Now and we can also save transcript, and it will save the spy as a txt file and it, will be shared with you. And after that you will be processing that file, and you can discuss about whatever you will be doing next and what is your action points
+10:06:49 Okay, So first thing, using the analytic approach which we discussed, I was able to create a program, and actually it's giving satisfying output.
+10:07:01 And second thing, I'm also trying on an approach like I did some research.
+10:07:06 So it's using pile touch along with some like library from Google.
+10:07:11 But it would be deep learning model and it requires, like too much of data.
+10:07:15 So I'm not sure it would be of helpful to us, since, like we won't be able to train it with the minimal amount of data.
+10:07:22 But I think the analytical approach which we have it's sufficient to at least like, go ahead with the further things
+10:07:31 Okay, perfect. So next action pointers, we will check with this sounds good, and your model, if it works well for us, and if it does, then we can look for another step for integrating in a bot or a deploying.
+10:07:48 This a python model to a is your web service.
+10:07:51 In that case, yeah.
+10:07:53 Okay, one thing I want to like, emphasize on the an Ltk approach, or whatever we are building it in the trucks of it.
+10:07:55 Yeah.
+10:08:03 What it is good, picks out the important sentences from a text given to it, like it doesn't have a capability of understanding. What is the answer to an question like Are you getting my point
+10:08:19 Yeah, okay.
+10:08:23 Hmm.
+10:08:27 Okay, perfect. We'll see how it works. Okay, So and the last thing I wanted to mention that my Yuri Sokato will be working on the presentation.
+10:08:36 That is one action point, and Shiva and me will be mostly working on this Api.
+10:08:39 Okay, yeah.
+10:08:44 Further, if there are more integrations available, Okay, and then we can test.
+10:08:49 And you know, deploy your python script to as your
+10:08:52 Yeah, like, I'll I'll hand over this analytics script to you guys, but I'll be keep working on that pie torch model.
+10:08:56 Yeah.
+10:08:59 If it can like, gives us a better output here.
