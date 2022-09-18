@@ -22,7 +22,7 @@ def index():
    #list = mailto.split(",")
    list = mailto.split(",")
    print(list,flush=True)
-   msg = Message('Hello', sender = 'xshivammishra@gmail.com', recipients = list) 
+   msg = Message('Minutes of Meeting', sender = 'xshivammishra@gmail.com', recipients = list) 
    with app.open_resource("your_mom.txt") as fp:  
     msg.attach("your_mom.txt", "application/txt", fp.read())
    fp = app.open_resource("your_mom.txt")
