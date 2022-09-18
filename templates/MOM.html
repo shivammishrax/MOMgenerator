@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+   <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>MOMBot</title>
+      <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+      <script>function btnOnClick(mailto, body) {
+        window.location = '/mail';}
+    </script>
+  </head>
+  <body> 
+    <div class="form-group" style = "text-align:center">  
+    <h1>Minutes of Meeting</h1>   
+    <div class="form-group">
+        <a href="{{ url_for('.download_file') }}">
+            <input type = "button" id = "mybutton" class="btn btn-success" value = "Download MoM" /></a> 
+    </div>
+    <div class="form-group">
+    <form action="/mail" method="post">
+        <label for="mailto">Please provide reciepients Email ID:</label>
+        <input width="100px" type="text" id="mailto" name="mailto" placeholder="Email ID's here">
+        <div>
+            <button class="btn btn-success" type="submit">Email Minutes of Meetings</button> 
+        </div>
+        {{success_message}}
+    </div>
+  
+    <textarea name="textareaid" id="textareaid" cols=100% rows=100% class="form-control">{{t}}</textarea>
+</div>
+
+</body>
+</html>
+  
+ 

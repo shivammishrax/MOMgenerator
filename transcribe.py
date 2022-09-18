@@ -141,69 +141,58 @@ def generateMOM(transFile):
         return summarize_text
     
 ###################################################################################
+    number = 1 
      
-    with open('your_mom.txt', 'w') as op: 
-        op.write("<html>") ; op.write('\n')
-        op.write('<div class="container">'); op.write('\n')
+    with open('your_mom.txt', 'w') as op:    
+        op.write('Minutes of the Meeting'); op.write('\n')
+        op.write('Date: ' + " " + str(current_day)[:10]) 
         op.write('\n')
+        op.write('Time: ' + timestamp) ; op.write('\n')
+        op.write('Participants: ' +" " + parName) ; op.write('\n')
         
-        op.write('**Title:** Meeting'); op.write('\n')
-        op.write('\n')
-        op.write('**Date:**' + " " + str(current_day)[:10]) ; op.write('\n')
-        op.write('\n')
-        op.write('**Time:**' + timestamp) ; op.write('\n')
-        op.write('\n')
-        op.write('**Participants:**' +" " + parName) ; op.write('\n')
-        op.write('\n')
-        
-        op.write('---')
+        op.write('-' * len('Participants: ' +" " + parName))
         op.write('\n') ; op.write('\n')
-        
-        op.write('**Pointers**')
-        op.write('\n'); op.write('\n')
+       
         d_len = len(discussion)
         if d_len < 10:
             d_len = d_len
         else:    
             d_len = int(d_len * 0.2)
         final = generat_summary('temp_d_1.txt', d_len)
-        for line in final:
+        op.write("Discussion: ") ; op.write('\n')
+        op.write('-' * 12); op.write('\n')
+        for line in final: 
             if len(line) < 40:
                 continue
-            line = '1. ' + line
+            line = str(number) + ". " + line
             op.write(line); 
-        
+            number +=1   
         op.write('\n')
-        op.write("**Questions Raised**");op.write('\n')
-        op.write('\n')
-        
+        op.write("Questions Raised: ");op.write('\n')
+        op.write('-' * 18); op.write('\n')
         q_len = len(questions_asked)
         if q_len > 5:
-            q_len = 5    
+            q_len = 5        
         q_final = generat_summary('temp_q_1.txt', q_len)
-        for q in q_final:         
-            q = '- '  + q 
+        for q in q_final:
             op.write(q)
-           
+            
+        number = 1
         op.write('\n')
-        op.write("**Action Points**");op.write('\n')
+        op.write('Action Points: '); op.write('\n')
+        op.write('-' * 15 )
         op.write('\n')
         
         for ac in action_item:  
-            ac = '1. '  + ac 
-            op.write(ac)
-                        
-        op.write("</div>"); op.write('\n') ; op.write("</html>")
-        op.close()
-
-#################################################################        
-        
+            ac = str(number) + ". "  + ac 
+            number += 1
+            op.write(ac)    
+        op.close()            
+    
     os.remove('output.txt')  
     os.remove('temp_d.txt')  
     os.remove('temp_d_1.txt')   
     os.remove('temp_q.txt') 
     os.remove('temp_q_1.txt') 
     return 'your_mom.txt'    
-
-############################ ###################################
         
