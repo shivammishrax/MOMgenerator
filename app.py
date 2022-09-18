@@ -24,7 +24,8 @@ def index():
     msg.attach("your_mom.txt", "application/txt", fp.read())
    fp = app.open_resource("your_mom.txt")
    content=fp.read()
-   #msg.html = render_template('mom_template.html', content=content)
+   mom=extract_mom(fp.filename)
+   msg.html = render_template('your_mom_template.html', mom=mom)
    msg.body = fp.read()
    mail.send(msg)
    success_message = "Your Minutes of Meeting has been send successfully on your provided emails. Happy Working!"
@@ -39,13 +40,23 @@ def upload_file():
 def generate():
     if request.method == 'POST':
         f = request.files['file']
-        f.save(f.filename) 
-        path = generateMOM(f.filename)
-        with open(path, 'r') as f:
-            t=f.read() 
-        return render_template('MOM.html', t=t)
+        #f.save(f.filename)
+        f.save("your_mom.txt")
+        mom=extract_mom(f.filename)
+        #path = mom.
+        #with open(path, 'r') as f:
+            #t=f.read()
+        #create_template(mom)
+        return render_template('mom_template.html', mom=mom)
 
 @app.route('/download')
 def download_file():
     path = 'your_mom.txt'
     return send_file(path, as_attachment=True)
+
+def extract_mom(filename):
+    mom=generateMOM(filename)
+    return mom
+
+def create_template(mom):
+    return render_template('your_mom_template.html', mom=mom)

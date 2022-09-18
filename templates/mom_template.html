@@ -1,10 +1,77 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>Minutes of Meeting</title>
-</head>
-<body>
-    {{content}}
+   <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>MOMBot</title>
+      <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+      <script>function btnOnClick(mailto, body) {
+        window.location = '/mail';}
+      </script>
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>    
+      <script> $(function(){$("#includedContent").load("your_mom_template.html"); });</script>  
+      <style>
+        hr {
+          background-color: #bbb;
+          height: 2px;
+          border: none;
+        }
+        hr:nth-child(3) {
+          background-color: #09c;
+          height: 2px;
+          border: none;
+        }
+        </style> 
+        
+        <script type="text/javascript" >
+            $('table').addClass('table table-bordered table-striped');
+        </script> 
+  </head>
+  <body> 
+    <div class="form-group" style = "text-align:center">  
+    <h1>Minutes of Meeting</h1>   
+    <div class="form-group">
+        <a href="{{ url_for('.download_file') }}">
+            <input type = "button" id = "mybutton" class="btn btn-success" value = "Download MoM" /></a> 
+    </div>
+    <div class="form-group">
+    <form action="/mail" method="post">
+        <label for="mailto">Please provide reciepients Email ID:</label>
+        <input width="100px" type="text" id="mailto" name="mailto" placeholder="Email ID's here">
+        <div>
+            <button class="btn btn-success" type="submit">Email Minutes of Meetings</button> 
+        </div>
+        {{success_message}}
+    </div>
+</div>
+<div class="container">
+    <p><strong>Title:</strong> Meeting</p>
+    <p><strong>Date:</strong> {{mom.date}}</p>
+    <p><strong>Time:</strong> {{mom.time}}</p>
+    <p><strong>Participants:</strong> {{mom.participants}}</p>
+    <hr>
+    <p><strong>Pointers</strong></p>
+    <ol>
+        {% for item in mom.pointers %}
+        <li>{{ item}} </li>  {% endfor %}
+    </ol>
+    <div>
+    <p><strong>Questions Raised</strong></p>
+    
+        {% for item in mom.questions %}
+        <li>{{ item}} </li>  {% endfor %}
+    </ol>
+    </div>
+    <div>
+    <p><strong>Action Points</strong></p>
+    <ol>
+        {% for item in mom.action %}
+        <li>{{ item}} </li>  {% endfor %} 
+    </ol>
+    </div>
+    </div>
+
 </body>
 </html>
+  
+ 

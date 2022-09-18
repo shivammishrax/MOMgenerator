@@ -141,58 +141,75 @@ def generateMOM(transFile):
         return summarize_text
     
 ###################################################################################
-    number = 1 
-     
-    with open('your_mom.txt', 'w') as op:    
-        op.write('Minutes of the Meeting'); op.write('\n')
-        op.write('Date: ' + " " + str(current_day)[:10]) 
-        op.write('\n')
-        op.write('Time: ' + timestamp) ; op.write('\n')
-        op.write('Participants: ' +" " + parName) ; op.write('\n')
-        
-        op.write('-' * len('Participants: ' +" " + parName))
-        op.write('\n') ; op.write('\n')
-       
-        d_len = len(discussion)
-        if d_len < 10:
-            d_len = d_len
-        else:    
-            d_len = int(d_len * 0.2)
-        final = generat_summary('temp_d_1.txt', d_len)
-        op.write("Discussion: ") ; op.write('\n')
-        op.write('-' * 12); op.write('\n')
-        for line in final: 
-            if len(line) < 40:
-                continue
-            line = str(number) + ". " + line
-            op.write(line); 
-            number +=1   
-        op.write('\n')
-        op.write("Questions Raised: ");op.write('\n')
-        op.write('-' * 18); op.write('\n')
-        q_len = len(questions_asked)
-        if q_len > 5:
-            q_len = 5        
-        q_final = generat_summary('temp_q_1.txt', q_len)
-        for q in q_final:
-            op.write(q)
-            
-        number = 1
-        op.write('\n')
-        op.write('Action Points: '); op.write('\n')
-        op.write('-' * 15 )
-        op.write('\n')
-        
-        for ac in action_item:  
-            ac = str(number) + ". "  + ac 
-            number += 1
-            op.write(ac)    
-        op.close()            
+
+    op = open('your_mom.txt', 'w')
     
+    op.write('Minutes of the Meeting'); op.write('\n')
+    op.write('Date: ' + " " + str(current_day)[:10]) 
+    op.write('\n')
+    op.write('Time: ' + timestamp) ; op.write('\n')
+    op.write('Participants: ' +" " + parName) ; op.write('\n')
+    op.write('-' * len('Participants: ' +" " + parName))
+    op.write('\n') ; op.write('\n')
+    
+    
+    number = 1
+    mom = dict()
+    mom['title'] = 'Minutes of the Meeting'
+    mom['date'] = str(current_day)[:10]
+    mom['time'] = timestamp[1:]
+    mom['participants'] = parName
+    op.write("Discussion: ") ; op.write('\n')
+    op.write('-' * 12); op.write('\n')
+    
+    d_len = len(discussion)
+    if d_len < 10:
+        d_len = d_len
+    else:    
+        d_len = int(d_len * 0.2)
+    pointers = generat_summary('temp_d_1.txt', d_len)
+    mom['pointers'] = []
+    for line in pointers: 
+        if len(line) < 40:
+            continue
+        #line = str(number) + ". " + line
+        mom['pointers'].append(line)
+        op.write(line);
+        #number +=1
+    
+    op.write('\n')
+    op.write("Questions Raised: ");op.write('\n')
+    op.write('-' * 18); op.write('\n')
+    
+    mom['questions'] = []
+    q_len = len(questions_asked)
+    if q_len > 5:
+        q_len = 5        
+    q_final = generat_summary('temp_q_1.txt', q_len)
+    for q in q_final:
+        mom['questions'].append(q)
+        op.write(q)
+        
+    op.write('\n')
+    op.write('Action Points: '); op.write('\n')
+    op.write('-' * 15 ); op.write('\n')
+    number = 1
+    mom['action'] = []
+    for ac in action_item:  
+        #ac = str(number) + ". "  + ac 
+        mom['action'].append(ac)
+        op.write(ac)
+        #number += 1
+            
+    op.close()            
+    mom['file'] = 'your_mom.txt'
     os.remove('output.txt')  
     os.remove('temp_d.txt')  
     os.remove('temp_d_1.txt')   
     os.remove('temp_q.txt') 
     os.remove('temp_q_1.txt') 
-    return 'your_mom.txt'    
+#    print(mom.keys())
+    return mom    
         
+
+

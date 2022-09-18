@@ -7,7 +7,9 @@
       <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
       <script>function btnOnClick(mailto, body) {
         window.location = '/mail';}
-    </script>
+      </script>
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>    
+      <script> $(function(){$("#includedContent").load("your_mom_template.html"); });</script>  
   </head>
   <body> 
     <div class="form-group" style = "text-align:center">  
@@ -25,7 +27,7 @@
         </div>
         {{success_message}}
     </div>
-  
+    <body><div id="includedContent"></div></body>
     <textarea name="textareaid" id="textareaid" cols=100% rows=100% class="form-control">{{t}}</textarea>
 </div>
 
