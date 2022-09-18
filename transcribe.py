@@ -37,7 +37,7 @@ def generateMOM(transFile):
     lineNo = 0
     discussion = []
     prevName = ""
-    ac_item = 'This is an action item, '
+    ac_item = 'action item'
     ac_len = len(ac_item)
     action_item = []
     for line in filedata:

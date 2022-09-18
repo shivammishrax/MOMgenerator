@@ -8,27 +8,27 @@
       <script>function btnOnClick(mailto, body) {
         window.location = '/mail';}
       </script>
-      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>    
-      <script> $(function(){$("#includedContent").load("your_mom_template.html"); });</script>  
+      <script src="https://code.jquery.com/jquery-3.5.0.js"></script>   
+      <!--<script> $(function(){$("#includedContent").load("/template.html"); });</script> --> 
   </head>
   <body> 
     <div class="form-group" style = "text-align:center">  
-    <h1>Minutes of Meeting</h1>   
+    <h1 style = "padding-top: 20px;">Minutes of Meeting</h1>   
     <div class="form-group">
         <a href="{{ url_for('.download_file') }}">
             <input type = "button" id = "mybutton" class="btn btn-success" value = "Download MoM" /></a> 
     </div>
     <div class="form-group">
     <form action="/mail" method="post">
-        <label for="mailto">Please provide reciepients Email ID:</label>
-        <input width="100px" type="text" id="mailto" name="mailto" placeholder="Email ID's here">
-        <div>
+        <label for="mailto">Want this MOM in your inbox? Share Email ID(s):</label>
+        <input style="width:700px"  type="text" id="mailto" name="mailto" placeholder="Email ID's here">
+        <div style = "padding-top: 5px;">
             <button class="btn btn-success" type="submit">Email Minutes of Meetings</button> 
         </div>
-        {{success_message}}
+        {{message}}
     </div>
-    <body><div id="includedContent"></div></body>
-    <textarea name="textareaid" id="textareaid" cols=100% rows=100% class="form-control">{{t}}</textarea>
+     <div id="includedContent"></div>
+     <script>$("#includedContent").load("your_mom_template.html #ymt div");</script>
 </div>
 
 </body>

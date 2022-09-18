@@ -29,19 +29,19 @@
   </head>
   <body> 
     <div class="form-group" style = "text-align:center">  
-    <h1>Minutes of Meeting</h1>   
+    <h1 style = "padding-top: 20px;">Minutes of Meeting</h1>   
     <div class="form-group">
         <a href="{{ url_for('.download_file') }}">
             <input type = "button" id = "mybutton" class="btn btn-success" value = "Download MoM" /></a> 
     </div>
     <div class="form-group">
     <form action="/mail" method="post">
-        <label for="mailto">Please provide reciepients Email ID:</label>
-        <input width="100px" type="text" id="mailto" name="mailto" placeholder="Email ID's here">
-        <div>
+        <label for="mailto">Want this MOM in your inbox? Share Email ID(s):</label>
+        <input style="width:700px" type="text" id="mailto" name="mailto" placeholder="Comma seperated Email ID's here">
+        <div style = "padding-top: 5px;">
             <button class="btn btn-success" type="submit">Email Minutes of Meetings</button> 
         </div>
-        {{success_message}}
+        {{message}}
     </div>
 </div>
 <div class="container">
@@ -50,18 +50,23 @@
     <p><strong>Time:</strong> {{mom.time}}</p>
     <p><strong>Participants:</strong> {{mom.participants}}</p>
     <hr>
+    
+    <div>
     <p><strong>Pointers</strong></p>
     <ol>
         {% for item in mom.pointers %}
         <li>{{ item}} </li>  {% endfor %}
     </ol>
-    <div>
+    </div>
+
+    <div>    
     <p><strong>Questions Raised</strong></p>
-    
+    <ol>
         {% for item in mom.questions %}
         <li>{{ item}} </li>  {% endfor %}
     </ol>
     </div>
+    
     <div>
     <p><strong>Action Points</strong></p>
     <ol>
@@ -69,8 +74,8 @@
         <li>{{ item}} </li>  {% endfor %} 
     </ol>
     </div>
-    </div>
-
+    <i>Created by Lego Coders</i>
+</div>
 </body>
 </html>
   

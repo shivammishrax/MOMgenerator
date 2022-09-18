@@ -1,0 +1,22 @@
+<div class="container">
+    <p><strong>Title:</strong> Meeting</p>
+    <p><strong>Date:</strong> {{mom.date}}</p>
+    <p><strong>Time:</strong> {{mom.time}}</p>
+    <p><strong>Participants:</strong> {{mom.participants}}</p>
+    <hr>
+    <p><strong>Pointers</strong></p>
+    <ul>
+        {% for item in mom.pointers %}
+        <li>{{ item}} </li>  {% endfor %}
+    </ul>
+    <p><strong>Questions Raised</strong></p>
+    <ul>
+        {% for item in mom.questions %}
+        <li>{{ item}} </li>  {% endfor %}
+    </ul>
+    <p><strong>Action Points</strong></p>
+        <ul>
+            {% for item in mom.action %}
+            <li>{{ item}} </li>  {% endfor %}
+        </ul>  
+    </div>
